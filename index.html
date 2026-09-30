@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>SpendWise - Modern Expense Tracker & Budget Manager</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+          },
+          colors: {
+            primary: {
+              50: '#eef2ff',
+              100: '#e0e7ff',
+              200: '#c7d2fe',
+              300: '#a5b4fc',
+              400: '#818cf8',
+              500: '#6366f1',
+              600: '#4f46e5',
+              700: '#4338ca',
+              800: '#3730a3',
+              900: '#312e81',
+              950: '#1e1b4b',
+            },
+            surface: {
+              light: '#f8fafc',
+              dark: '#0f172a',
+              cardLight: '#ffffff',
+              cardDark: '#1e293b',
+              borderLight: '#e2e8f0',
+              borderDark: '#334155'
+            }
+          },
+          boxShadow: {
+            'subtle': '0 1px 3px 0 rgba(0, 0, 0, 0.05), 0 1px 2px 0 rgba(0, 0, 0, 0.03)',
+            'card': '0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03)',
+            'card-hover': '0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.04)',
+            'glow': '0 0 20px -5px rgba(99, 102, 241, 0.4)'
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body class="h-full bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 font-sans antialiased selection:bg-indigo-500 selection:text-white transition-colors duration-200">
+  <div id="app" class="flex h-full w-full overflow-hidden">
+    <!-- Desktop Sidebar (dynamic mounted via JS) -->
+    <aside id="desktop-sidebar" class="hidden md:flex flex-col w-64 lg:w-72 bg-white dark:bg-slate-900 border-r border-slate-200 dark:border-slate-800 flex-shrink-0 z-20 transition-all duration-300"></aside>
+
+    <!-- Main Content Area -->
+    <div class="flex-1 flex flex-col h-full overflow-hidden min-w-0">
+      <!-- Top Navigation Bar -->
+      <header id="top-navbar" class="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 h-16 flex items-center justify-between px-4 sm:px-6 lg:px-8 z-10 flex-shrink-0"></header>
+
+      <!-- Dynamic View Container -->
+      <main id="main-content" class="flex-1 overflow-y-auto p-4 sm:p-6 lg:p-8 pb-24 md:pb-8 max-w-7xl w-full mx-auto space-y-6"></main>
+    </div>
+
+    <!-- Mobile Bottom Navigation (dynamic mounted via JS) -->
+    <nav id="mobile-navbar" class="md:hidden fixed bottom-0 left-0 right-0 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border-t border-slate-200 dark:border-slate-800 z-30 px-2 py-1.5"></nav>
+
+    <!-- Mobile Floating Action Button (FAB) -->
+    <div id="fab-container" class="md:hidden"></div>
+
+    <!-- Transaction Add/Edit Modal (Bottom Sheet on Mobile, Centered on Desktop) -->
+    <div id="modal-container"></div>
+
+    <!-- Budget Edit Modal -->
+    <div id="budget-modal-container"></div>
+
+    <!-- Confirmation Dialog Modal -->
+    <div id="confirm-modal-container"></div>
+
+    <!-- Toast Notification Hub -->
+    <div id="toast-container" class="fixed top-4 right-4 z-50 flex flex-col gap-2 pointer-events-none max-w-md w-full px-4 sm:px-0"></div>
+  </div>
+
+  <!-- Application Scripts (Modular ES6) -->
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
